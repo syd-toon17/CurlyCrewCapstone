@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'cars.apps.CarsConfig',  # This app is for example use only
     'curlycrew.apps.CurlycrewConfig',
-    'curlyguardian.apps.CurlyguardianConfig'
+    'curlyguardian.apps.CurlyguardianConfig',
+    'hairvideos.apps.HairvideosConfig'
 ]
 
 MIDDLEWARE = [
