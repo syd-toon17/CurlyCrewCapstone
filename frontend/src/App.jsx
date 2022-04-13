@@ -12,10 +12,12 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
+import AddCommentForm from "./components/AddCommentForm/AddCommentForm";
 import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import RelatedVideos from "./components/RelatedVideos/RelatedVideos";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -38,7 +40,7 @@ function App() {
 // refrer to the individual objecs you are mapping over as video
 // we can access the snippet data and set it equal to src={video.snippet.thumbnails.medium.url}
 // each item should have a thumbnail, title and description
-async function getSearchResults(searchTerm='bob ross'){
+async function getSearchResults(searchTerm='curly hair'){
   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${api_key}`);
   console.log(response.data.items)
  
@@ -48,30 +50,53 @@ async function getSearchResults(searchTerm='bob ross'){
 async function getRelatedVideos(id){
   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${api_key}`);
   console.log(response.data.items)
-  // setCurrentVideoId(response.data.items[0].id.videoId)
-  // setCurrentVideoDescription(response.data.items[0].snippet.description)
-  // setCurrentVideoTitle(response.data.items[0].snippet.title)
   setRelatedVideos(response.data.items)
 }
 
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
+    <div className="App">
+    <SearchBar getSearchResults={getSearchResults}/>
+    <Navbar />
+    <Routes>
+      <Route
+        path="/"
+        element={
+         <HomePage />
+        }
         />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-      <Footer />
-    </div>
-  );
+      <Route
+        path="/search_result"
+        element={
+          <SearchPage searchResults = {SearchPage} />
+        }
+        />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
+    <VideoPlayer 
+    currentVideoDescription={currentVideoDescription}
+    currentVideoId={currentVideoId}
+    currentVideoTitle={currentVideoTitle}
+    
+    />
+    
+    <RelatedVideos 
+    currentVideoId={currentVideoId}
+    relatedVideos = {relatedVideos}
+    setCurrentVideoId = {setCurrentVideoId}
+    setCurrentVideoTitle = {setCurrentVideoTitle}
+    setCurrentVideoDescription = {setCurrentVideoDescription} 
+    changeCurrentVid = {changeCurrentVid}
+    />
+    <SearchPage 
+    searchResults={searchResults} 
+    setCurrentVideoDescription ={setCurrentVideoDescription}
+    setCurrentVideoId ={changeCurrentVid}
+    setCurrentVideoTitle={setCurrentVideoTitle}
+    />
+    <Footer />
+  </div>
+);
 }
 
 export default App;
