@@ -9,19 +9,21 @@ import { api_key } from "./localsettings";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import AddCommentForm from "./components/AddCommentForm/AddCommentForm";
 import Footer from "./components/Footer/Footer";
-
+import SearchBar from "./components/SearchBar/SearchBar";
+import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import RelatedVideos from "./components/RelatedVideos/RelatedVideos";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [currentVideoId, setCurrentVideoId] = useState('lLWEXRAnQd0'); // this is coming from the user clicking on thumbnail
+  const [currentVideoId, setCurrentVideoId] = useState('Xxci46F9mzI'); // this is coming from the user clicking on thumbnail
   const [currentVideoTitle, setCurrentVideoTitle] = useState(""); // same
   const [currentVideoDescription, setCurrentVideoDescription] = useState(""); // same
   const [relatedVideos, setRelatedVideos] = useState([]);
