@@ -1,18 +1,21 @@
 import React from "react";
-import { api_key } from "../../localsettings"
+import { maps_api_key } from "../../localsettings"
 
 
 const SalonsMap = (props) => {
     return(
         <div>
-                <iframe width="450" height="250" 
+                <iframe
+                    width="600"
+                    height="450"
+                    // style="border:0"
+                    style={{border:0}}
+                    loading="lazy"
+                    allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-    src={`https://www.google.com/maps/embed/v1/view?key=${api_key}q=Milwaukee,Wisconsin&center=-33.8569,151.215`}
-                    frameBorder="0"
-                    allowFullScreen>
+                    src={`https://www.google.com/maps/embed/v1/search?key=${maps_api_key}
+                    &q=hair+salonss+in+Milwaukee`} >
                 </iframe>
-            
-        
         </div>
         
     );

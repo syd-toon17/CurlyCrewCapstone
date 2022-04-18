@@ -68,6 +68,16 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
+        <label>
+          Curl Type:{" "}
+          <input
+            type="text"
+            name="curlType"
+            value={formData.curlType}
+            onChange={handleInputChange}
+          />
+        </label>
+
         <button>Register!</button>
       </form>
     </div>

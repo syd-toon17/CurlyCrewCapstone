@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useState, useEffect, Component } from "react";
 import axios from "axios";
-import { api_key } from "./localsettings";
+import { yt_api_key, maps_api_key} from './localsettings'
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -45,14 +45,14 @@ function App() {
 // we can access the snippet data and set it equal to src={video.snippet.thumbnails.medium.url}
 // each item should have a thumbnail, title and description
 async function getSearchResults(searchTerm='curly hair'){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${api_key}`);
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${yt_api_key}`);
   console.log(response.data.items)
  
   setSearchResults(response.data.items)
 }
 
 async function getRelatedVideos(id){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${api_key}`);
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${yt_api_key}`);
   console.log(response.data.items)
   setRelatedVideos(response.data.items)
 }
@@ -86,7 +86,7 @@ async function getRelatedVideos(id){
     <SalonsMap />
 
     
-    <RelatedVideos 
+    {/* <RelatedVideos 
     currentVideoId={currentVideoId}
     relatedVideos = {relatedVideos}
     setCurrentVideoId = {setCurrentVideoId}
@@ -99,7 +99,7 @@ async function getRelatedVideos(id){
     setCurrentVideoDescription ={setCurrentVideoDescription}
     setCurrentVideoId ={changeCurrentVid}
     setCurrentVideoTitle={setCurrentVideoTitle}
-    />
+    /> */}
     <Footer />
   </div>
 );
