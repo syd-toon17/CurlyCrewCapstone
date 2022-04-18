@@ -17,9 +17,11 @@ import AddCommentForm from "./components/AddCommentForm/AddCommentForm";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/SearchBar";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
+
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import RelatedVideos from "./components/RelatedVideos/RelatedVideos";
+import SalonsMap from "./components/SalonsMap/SalonsMap";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -81,6 +83,8 @@ async function getRelatedVideos(id){
     currentVideoTitle={currentVideoTitle}
     
     />
+    <SalonsMap />
+
     
     <RelatedVideos 
     currentVideoId={currentVideoId}
