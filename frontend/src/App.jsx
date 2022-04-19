@@ -28,26 +28,7 @@ function App() {
   const [currentVideoId, setCurrentVideoId] = useState('Xxci46F9mzI'); // this is coming from the user clicking on thumbnail
   const [currentVideoTitle, setCurrentVideoTitle] = useState(""); // same
   const [currentVideoDescription, setCurrentVideoDescription] = useState(""); // same
-  const [relatedVideos, setRelatedVideos] = useState([]);
-  // const [lat, setLat] = useState(null);
-  // const [lng, setLng] = useState(null);
-  // const [status, setStatus] = useState(null);
-
-  // const getLocation = () => {
-  //   if (!navigator.geolocation) {
-  //     setStatus('Geolocation is not supported by your browser');
-  //   } else {
-  //     setStatus('Locating...');
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       setStatus(null);
-  //       setLat(position.coords.latitude);
-  //       setLng(position.coords.longitude);
-  //     }, () => {
-  //       setStatus('Unable to retrieve your location');
-  //     });
-  //   }
-  // }
-  
+  const [relatedVideos, setRelatedVideos] = useState([]);  
 
   useEffect(() => {
     getRelatedVideos(currentVideoId)
@@ -95,21 +76,12 @@ async function getRelatedVideos(id){
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
-    {/* <button onClick={getLocation}>Get Location</button>
-    <h1>Coordinates</h1>
-    <p>{status}</p>
-    {lat && <p>Latitude: {lat}</p>}
-    {lng && <p>Longitude: {lng}</p>} */}
     <VideoPlayer 
     currentVideoDescription={currentVideoDescription}
     currentVideoId={currentVideoId}
     currentVideoTitle={currentVideoTitle}
-    
     />
-    <SalonsMap />
-
-    
-    {/* <RelatedVideos 
+    <RelatedVideos 
     currentVideoId={currentVideoId}
     relatedVideos = {relatedVideos}
     setCurrentVideoId = {setCurrentVideoId}
@@ -122,7 +94,8 @@ async function getRelatedVideos(id){
     setCurrentVideoDescription ={setCurrentVideoDescription}
     setCurrentVideoId ={changeCurrentVid}
     setCurrentVideoTitle={setCurrentVideoTitle}
-    /> */}
+    />
+    <SalonsMap />
     <Footer />
   </div>
 );
