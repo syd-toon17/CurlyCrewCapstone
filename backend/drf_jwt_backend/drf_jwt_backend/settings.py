@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',  # This app is for example use only
     'curlycrew.apps.CurlycrewConfig',
     'curlyguardian.apps.CurlyguardianConfig',
-    'hairvideos.apps.HairvideosConfig'
+    'hairvideos.apps.HairvideosConfig',
+    'curlykid.apps.CurlykidConfig',
 ]
 
 MIDDLEWARE = [

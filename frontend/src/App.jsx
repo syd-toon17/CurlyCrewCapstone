@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -58,9 +59,15 @@ async function getRelatedVideos(id){
 
   return (
     <div className="App">
-    <SearchBar getSearchResults={getSearchResults}/>
     <Navbar />
+    <SearchBar getSearchResults={getSearchResults}/>
     <Routes>
+      <Route
+        path="/profile"
+        element={
+          <ProfilePage/>
+        }
+        />
       <Route
         path="/"
         element={
@@ -76,25 +83,6 @@ async function getRelatedVideos(id){
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
-    <VideoPlayer 
-    currentVideoDescription={currentVideoDescription}
-    currentVideoId={currentVideoId}
-    currentVideoTitle={currentVideoTitle}
-    />
-    <RelatedVideos 
-    currentVideoId={currentVideoId}
-    relatedVideos = {relatedVideos}
-    setCurrentVideoId = {setCurrentVideoId}
-    setCurrentVideoTitle = {setCurrentVideoTitle}
-    setCurrentVideoDescription = {setCurrentVideoDescription} 
-    changeCurrentVid = {changeCurrentVid}
-    />
-    <SearchPage 
-    searchResults={searchResults} 
-    setCurrentVideoDescription ={setCurrentVideoDescription}
-    setCurrentVideoId ={changeCurrentVid}
-    setCurrentVideoTitle={setCurrentVideoTitle}
-    />
     <SalonsMap />
     <Footer />
   </div>
