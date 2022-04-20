@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'curlycrew.apps.CurlycrewConfig',
     'curlyguardian.apps.CurlyguardianConfig',
     'hairvideos.apps.HairvideosConfig',
-    'curlykid.apps.CurlykidConfig',
+    
 ]
 
 MIDDLEWARE = [
