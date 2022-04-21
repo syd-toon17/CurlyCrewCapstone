@@ -59,6 +59,7 @@ async function getRelatedVideos(id){
 
   return (
     <div className="App">
+      <Navbar />
     <Routes>
       <Route
         path="/profile"

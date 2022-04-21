@@ -4,4 +4,4 @@ from .models import CurlyCrew
 class CurlyCrewSerializer(serializers.ModelSerializer):
     class Meta:
         model = CurlyCrew
-        fields = ["user", "id", "first_name", "last_name", "curl_type"]
+        fields = ["user", "id", "first_name", "last_name", "curl_type", "self_or_other"]

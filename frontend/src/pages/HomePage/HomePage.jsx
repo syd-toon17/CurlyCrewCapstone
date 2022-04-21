@@ -48,7 +48,6 @@ async function getRelatedVideos(id){
 
   return (
     <div className="HomePage">
-    <Navbar />
     <SearchBar getSearchResults={getSearchResults}/>
     <VideoPlayer 
     currentVideoDescription={currentVideoDescription}

@@ -16,12 +16,10 @@ const Navbar = () => {
             <b>Curly Crew</b>
           </Link>
         </li>
-        <li className="profile">
-          <Link to="/profile" style={{ textDecoration: "none", color: "white" }}>
+        <li>
+        <Link to="/profile" style={{ textDecoration: "none", color: "white" }}>
               <button onClick={() => navigate("/profile")}>Profile</button>
             </Link>
-        </li>
-        <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (
