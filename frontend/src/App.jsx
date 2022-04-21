@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useState, useEffect, Component } from "react";
 import axios from "axios";
-import { yt_api_key, maps_api_key} from './localsettings'
+import { yt_api_key, maps_api_key} from './localsettings';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -82,8 +83,8 @@ async function getRelatedVideos(id){
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
-    <SalonsMap />
     <Footer />
+    <SalonsMap />
   </div>
 );
 }
