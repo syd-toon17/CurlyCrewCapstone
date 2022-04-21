@@ -11,6 +11,6 @@ from .serializers import CurlyCrewSerializer
 def get_by_user_id(request, id):
     if request.method == 'GET':
         user = CurlyCrew.objects.filter(user=id)
-        serializer = CurlyCrewSerializer(user, many=False)
+        serializer = CurlyCrewSerializer(user, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
    
