@@ -59,8 +59,6 @@ async function getRelatedVideos(id){
 
   return (
     <div className="App">
-    <Navbar />
-    <SearchBar getSearchResults={getSearchResults}/>
     <Routes>
       <Route
         path="/profile"

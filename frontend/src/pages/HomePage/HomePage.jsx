@@ -7,11 +7,11 @@ import RelatedVideos from "../../components/RelatedVideos/RelatedVideos";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-import Navbar from "../../components/NavBar/NavBar";
-import SearchBar from "../../components/SearchBar/SearchBar";
+
 import SearchPage from "../SearchPage/SearchPage";
-import SalonsMap from "../../components/SalonsMap/SalonsMap";
-import Footer from "../../components/Footer/Footer";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import Navbar from "../../components/NavBar/NavBar";
+
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
@@ -48,6 +48,8 @@ async function getRelatedVideos(id){
 
   return (
     <div className="HomePage">
+    <Navbar />
+    <SearchBar getSearchResults={getSearchResults}/>
     <VideoPlayer 
     currentVideoDescription={currentVideoDescription}
     currentVideoId={currentVideoId}
