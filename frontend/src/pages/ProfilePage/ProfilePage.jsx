@@ -15,7 +15,7 @@ console.log(user)
   GetUserInformation()
   async function GetUserInformation(){
     try {
-        let response = await axios.get((`http://127.0.0.1:8000/api/curlycrew/${user.id}/`), {
+        let response = await axios.get(`http://127.0.0.1:8000/api/curlycrew/user/${user.id}/`, {
             headers: {
                 Authorization: 'Bearer ' + token
             }
@@ -120,6 +120,7 @@ console.log(user)
       
       return(
       <SelfOrOther />
+      
       
       );
     
