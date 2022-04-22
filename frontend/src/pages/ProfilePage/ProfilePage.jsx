@@ -9,7 +9,6 @@ import axios from "axios";
 const ProfilePage = (props) =>{
 
   const [user,token] = useAuth()
-console.log(user)
   GetUserInformation()
   async function GetUserInformation(){
     try {
@@ -28,12 +27,48 @@ console.log(user)
     function SelfOrOther() {
       const [show, setShow] = useState(false);
       const [showOther, setShowOther] = useState(false);
-      
+      const [curlType, setCurlType] = useState("");
+      const [firstName, setFirstName] = useState("");
+      const [lastName, setLastName] = useState("");
       const handleClose = () => setShow(false);
       const handleShow = () => setShow(true);
       const handleCloseOther = () => setShowOther(false);
       const handleShowOther = () => setShowOther(true);
-      
+
+      const saveChanges = () => {
+        const userData = {
+          user: user.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          curl_type: curlType,
+          self_or_other: 'self',
+        
+        }
+        const response = axios.put(`http://127.0.0.1:8000/api/curlycrew/edit_user/${user.id}/`, userData,{
+          headers: {
+            Authorization: 'Bearer ' + token
+        }
+        })
+        handleClose()
+      };
+
+      const saveDependancies = () => {
+        const userData = {
+          user: user.id,
+          first_name: firstName,
+          last_name: lastName,
+          curl_type: curlType,
+          self_or_other: 'other',
+        
+        }
+        const response = axios.put(`http://127.0.0.1:8000/api/curlycrew/edit_user/${user.id}/`, userData,{
+          headers: {
+            Authorization: 'Bearer ' + token
+        }
+        })
+        handleCloseOther()
+      }
+
         return (
           <>
             <Button variant="primary" onClick={handleShow}>
@@ -51,6 +86,8 @@ console.log(user)
                     <Form.Control
                       type="text"
                       placeholder="Curl Type"
+                      value={curlType}
+                      onChange={(event) => setCurlType(event.target.value)}
                       autoFocus
                     />
                   </Form.Group>
@@ -60,7 +97,7 @@ console.log(user)
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={saveChanges}>
                   Save Changes
                 </Button>
               </Modal.Footer>
@@ -81,6 +118,8 @@ console.log(user)
                     <Form.Control
                       type="text"
                       placeholder="First Name"
+                      value={firstName}
+                      onChange={(event) => setFirstName(event.target.value)}
                       autoFocus
                     />
                   </Form.Group>
@@ -89,6 +128,8 @@ console.log(user)
                     <Form.Control
                       type="text"
                       placeholder="Last Name"
+                      value={lastName}
+                      onChange={(event) => setLastName(event.target.value)}
                       autoFocus
                     />
                   </Form.Group>
@@ -96,7 +137,9 @@ console.log(user)
                     <Form.Label>Curl Type</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="text"
+                      placeholder="Curl Type"
+                      value={curlType}
+                      onChange={(event) => setCurlType(event.target.value)}
                       autoFocus
                     />
                   </Form.Group>
@@ -106,7 +149,7 @@ console.log(user)
                 <Button variant="secondary" onClick={handleCloseOther}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleCloseOther}>
+                <Button variant="primary" onClick={saveDependancies}>
                   Save Changes
                 </Button>
               </Modal.Footer>
@@ -121,6 +164,7 @@ console.log(user)
       <SelfOrOther />
       {user.first_name}
       {user.last_name}
+      {user.curl_type}
       {user.username}
       {user.email}
       </>

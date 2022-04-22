@@ -19,10 +19,13 @@ function HomePage() {
   const [currentVideoTitle, setCurrentVideoTitle] = useState(""); // same
   const [currentVideoDescription, setCurrentVideoDescription] = useState(""); // same
   const [relatedVideos, setRelatedVideos] = useState([]);  
+  const [comments, setComments] = useState([]);  
 
   useEffect(() => {
     getRelatedVideos(currentVideoId)
+    getComments(currentVideoId)
   },[])
+
 
   function changeCurrentVid (id){
     setCurrentVideoId(id)
@@ -50,6 +53,16 @@ async function getRelatedVideos(id){
   }
 }
 
+async function getComments(id){
+  try{
+    let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/comment/${currentVideoId}`);
+    console.log(response.data.comments)
+    setComments(response.data.comments)
+  } catch(error) {
+    console.log(error)
+  }
+}
+
   return (
     <div className="HomePage">
     <SearchBar getSearchResults={getSearchResults}/>
@@ -58,6 +71,7 @@ async function getRelatedVideos(id){
     currentVideoId={currentVideoId}
     currentVideoTitle={currentVideoTitle}
     />
+
     <RelatedVideos 
     currentVideoId={currentVideoId}
     relatedVideos = {relatedVideos}
