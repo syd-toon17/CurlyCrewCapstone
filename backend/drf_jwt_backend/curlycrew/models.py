@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class CurlyCrew(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length= 225)
     last_name = models.CharField(max_length= 225)
     curl_type = models.CharField(max_length= 225)

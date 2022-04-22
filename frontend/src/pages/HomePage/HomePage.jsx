@@ -41,9 +41,13 @@ async function getSearchResults(searchTerm='curly hair'){
 }
 
 async function getRelatedVideos(id){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${yt_api_key}`);
-  console.log(response.data.items)
-  setRelatedVideos(response.data.items)
+  try{
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${yt_api_key}`);
+    console.log(response.data.items)
+    setRelatedVideos(response.data.items)
+  } catch(error) {
+    console.log(error)
+  }
 }
 
   return (

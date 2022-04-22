@@ -5,10 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
 
 const ProfilePage = (props) =>{
-  // const { user } = useContext(AuthContext);
 
   const [user,token] = useAuth()
 console.log(user)
@@ -119,9 +117,13 @@ console.log(user)
     }
       
       return(
+        <>
       <SelfOrOther />
-      
-      
+      {user.first_name}
+      {user.last_name}
+      {user.username}
+      {user.email}
+      </>
       );
     
 };
