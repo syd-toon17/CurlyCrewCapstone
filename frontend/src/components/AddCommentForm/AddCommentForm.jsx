@@ -21,7 +21,7 @@ const AddCommentForm = (props) => {
 
     async function postNewComment(){
         try {
-            let response = await axios.post("http://127.0.0.1:8000/api/hairvideos/add_comment/", formData, {
+            let response = await axios.post(`http://127.0.0.1:8000/api/hairvideos/add_comment/${props.currentVideoId}/`, formData, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -64,7 +64,7 @@ const AddCommentForm = (props) => {
                 onChange={handleInputChange}
               />
             </label>
-            <label>
+            {/* <label>
               likes:{" "}
               <input
                 type="text"
@@ -81,7 +81,7 @@ const AddCommentForm = (props) => {
                 value={formData.dislikes}
                 onChange={handleInputChange}
               />
-            </label>
+            </label> */}
             <p style={{ fontSize: "12px" }}>
               NOTE: Add your comment here!
             </p>

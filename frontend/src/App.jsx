@@ -32,31 +32,31 @@ function App() {
   const [currentVideoDescription, setCurrentVideoDescription] = useState(""); // same
   const [relatedVideos, setRelatedVideos] = useState([]);  
 
-  // useEffect(() => {
-  //   getRelatedVideos(currentVideoId)
-  // },[])
+  useEffect(() => {
+    getRelatedVideos(currentVideoId)
+  },[])
 
-  // function changeCurrentVid (id){
-  //   setCurrentVideoId(id)
-  //   console.log(id)
-  //   getRelatedVideos(id)
-  
+  function changeCurrentVid (id){
+    setCurrentVideoId(id)
+    console.log(id)
+    getRelatedVideos(id)
+  }
 // note is for the display search resutls Component, when you map over this data you will need to use . notation to access all of the info
 // refrer to the individual objecs you are mapping over as video
 // we can access the snippet data and set it equal to src={video.snippet.thumbnails.medium.url}
 // each item should have a thumbnail, title and description
-// async function getSearchResults(searchTerm='curly hair'){
-//   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${yt_api_key}`);
-//   console.log(response.data.items)
+async function getSearchResults(searchTerm='curly hair'){
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${yt_api_key}`);
+  console.log(response.data.items)
  
-//   setSearchResults(response.data.items)
-// }
+  setSearchResults(response.data.items)
+}
 
-// async function getRelatedVideos(id){
-//   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${yt_api_key}`);
-//   console.log(response.data.items)
-//   setRelatedVideos(response.data.items)
-
+async function getRelatedVideos(id){
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&part=snippet&key=${yt_api_key}`);
+  console.log(response.data.items)
+  setRelatedVideos(response.data.items)
+}
 
   return (
     <div className="App">
@@ -71,7 +71,9 @@ function App() {
       <Route
         path="/"
         element={
-         <HomePage />
+         <HomePage 
+         currentVideoId={currentVideoId}
+         />
         }
         />
       <Route
@@ -95,6 +97,6 @@ function App() {
     <SalonsMap />
   </div>
 );
-}
+        }
 
 export default App;

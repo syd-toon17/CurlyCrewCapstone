@@ -11,9 +11,10 @@ import useAuth from "../../hooks/useAuth";
 import SearchPage from "../SearchPage/SearchPage";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Navbar from "../../components/NavBar/NavBar";
+import DisplayComments from "../../components/DisplayComments/DisplayComments";
 
 
-function HomePage() {
+function HomePage(props) {
   const [searchResults, setSearchResults] = useState([]);
   const [currentVideoId, setCurrentVideoId] = useState('Xxci46F9mzI'); // this is coming from the user clicking on thumbnail
   const [currentVideoTitle, setCurrentVideoTitle] = useState(""); // same
@@ -54,10 +55,12 @@ async function getRelatedVideos(id){
 }
 
 async function getComments(id){
+  console.log(props.currentVideoId)
+
   try{
-    let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/comment/${currentVideoId}`);
-    console.log(response.data.comments)
-    setComments(response.data.comments)
+    let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/comment/${props.currentVideoId}/`);
+    console.log(response.data)
+    setComments(response.data || [])
   } catch(error) {
     console.log(error)
   }
@@ -71,6 +74,7 @@ async function getComments(id){
     currentVideoId={currentVideoId}
     currentVideoTitle={currentVideoTitle}
     />
+    <DisplayComments parentComment={comments} />
 
     <RelatedVideos 
     currentVideoId={currentVideoId}

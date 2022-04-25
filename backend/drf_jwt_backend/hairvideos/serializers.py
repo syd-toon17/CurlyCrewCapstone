@@ -1,5 +1,6 @@
+from dataclasses import fields
 from rest_framework import serializers
-from .models import Comment, Reply
+from .models import Comment, Favorite, Reply
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,3 +15,9 @@ class ReplySerializer(serializers.ModelSerializer):
         depth = 1
 
     comment_id = serializers.IntegerField(write_only = True)
+
+class FavoriteVidSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ['id', 'user', 'video_id']
+        depth = 1
