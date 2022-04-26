@@ -1,12 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import DisplayFavoriteVideos from "../../components/DisplayFavoriteVideo/DisplayFavoriteVideo";
 
 const ProfilePage = (props) =>{
+  useEffect(() => {
+    GetFavoriteVideos()
+  },[])
+  const [favoriteVideos, setFavoriteVideos] = useState([])
 
   const [user,token] = useAuth()
   GetUserInformation()
@@ -17,6 +22,21 @@ const ProfilePage = (props) =>{
                 Authorization: 'Bearer ' + token
             }
         })
+        console.log(response)
+    } catch (error) {
+        console.log(token)
+        console.log(error.message)
+    }
+}
+  
+  async function GetFavoriteVideos(){
+    try {
+        let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/favorite_videos/`, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        setFavoriteVideos(response.data)
         console.log(response)
     } catch (error) {
         console.log(token)
@@ -154,6 +174,9 @@ const ProfilePage = (props) =>{
                 </Button>
               </Modal.Footer>
             </Modal>
+            <DisplayFavoriteVideos
+            parentFavoriteVideos={favoriteVideos}
+            />
         </>
         
       );
