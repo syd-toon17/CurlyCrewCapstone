@@ -12,6 +12,7 @@ import SearchPage from "../SearchPage/SearchPage";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Navbar from "../../components/NavBar/NavBar";
 import DisplayComments from "../../components/DisplayComments/DisplayComments";
+import AddCommentForm from "../../components/AddCommentForm/AddCommentForm";
 
 
 function HomePage(props) {
@@ -75,6 +76,7 @@ async function getComments(id){
     currentVideoTitle={currentVideoTitle}
     />
     <DisplayComments parentComment={comments} />
+    < AddCommentForm />
 
     <RelatedVideos 
     currentVideoId={currentVideoId}

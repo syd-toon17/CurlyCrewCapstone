@@ -46,9 +46,10 @@ function App() {
 // we can access the snippet data and set it equal to src={video.snippet.thumbnails.medium.url}
 // each item should have a thumbnail, title and description
 async function getSearchResults(searchTerm='curly hair'){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${yt_api_key}`);
+  let response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?q${searchTerm}&=type=beauty&type=hair&key=${yt_api_key}`);
   console.log(response.data.items)
  
+  
   setSearchResults(response.data.items)
 }
 

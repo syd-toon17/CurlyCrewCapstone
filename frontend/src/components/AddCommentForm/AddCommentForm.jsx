@@ -64,24 +64,6 @@ const AddCommentForm = (props) => {
                 onChange={handleInputChange}
               />
             </label>
-            {/* <label>
-              likes:{" "}
-              <input
-                type="text"
-                name="likes"
-                value={formData.likes}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Dislikes:{" "}
-              <input
-                type="text"
-                name="dislikes"
-                value={formData.dislikes}
-                onChange={handleInputChange}
-              />
-            </label> */}
             <p style={{ fontSize: "12px" }}>
               NOTE: Add your comment here!
             </p>

@@ -1,9 +1,12 @@
+import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
   return (
     <footer>
-      <p>Copyright © 2022</p>{" "}
+      <div className="copy-right">
+            <medium className='copy-color'>Welcome to The </medium><b className="footer-color"> Curly Crew! &copy;{new Date().getFullYear()} | No Rights Reserved | Open-Source</b>
+      </div>
     </footer>
   );
 };
