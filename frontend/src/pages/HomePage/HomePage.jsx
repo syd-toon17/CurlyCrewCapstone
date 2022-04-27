@@ -26,7 +26,7 @@ function HomePage(props) {
   useEffect(() => {
     getRelatedVideos(currentVideoId)
     getComments(currentVideoId)
-  },[])
+  },[currentVideoId])
 
 
   function changeCurrentVid (id){
@@ -57,9 +57,9 @@ async function getRelatedVideos(id){
 
 async function getComments(id){
   console.log(props.currentVideoId)
-
+  console.log(id)
   try{
-    let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/comment/${props.currentVideoId}/`);
+    let response = await axios.get(`http://127.0.0.1:8000/api/hairvideos/comment/${id}/`);
     console.log(response.data)
     setComments(response.data || [])
   } catch(error) {

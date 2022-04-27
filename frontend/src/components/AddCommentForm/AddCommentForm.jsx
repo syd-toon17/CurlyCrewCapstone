@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import "./AddCommentForm.css"
 
 let initialValues = {
     user: "",
@@ -55,7 +55,7 @@ const AddCommentForm = (props) => {
                 onChange={handleInputChange}
               />
             </label>
-            <label>
+            {/* <label>
               VideoId:{""}
               <input
                 type="text"
@@ -63,7 +63,7 @@ const AddCommentForm = (props) => {
                 value={formData.video_id}
                 onChange={handleInputChange}
               />
-            </label>
+            </label> */}
             <p style={{ fontSize: "12px" }}>
               NOTE: Add your comment here!
             </p>
