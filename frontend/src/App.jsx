@@ -70,7 +70,7 @@ async function getRelatedVideos(id){
         }
         />
       <Route
-        path="/"
+        path="*"
         element={
          <HomePage 
          currentVideoId={currentVideoId}

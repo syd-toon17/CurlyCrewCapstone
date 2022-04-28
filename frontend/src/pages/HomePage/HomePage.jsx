@@ -28,6 +28,9 @@ function HomePage(props) {
     getComments(currentVideoId)
   },[currentVideoId])
 
+  function refreshComments(){
+    getComments(currentVideoId)
+  } 
 
   function changeCurrentVid (id){
     setCurrentVideoId(id)
@@ -39,7 +42,7 @@ function HomePage(props) {
 // we can access the snippet data and set it equal to src={video.snippet.thumbnails.medium.url}
 // each item should have a thumbnail, title and description
 async function getSearchResults(searchTerm='curly hair'){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${yt_api_key}`);
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=hair ${searchTerm}&type=video&videoCategoryId=26&part=snippet&key=${yt_api_key}`);
   console.log(response.data.items)
  
   setSearchResults(response.data.items)
@@ -76,7 +79,10 @@ async function getComments(id){
     currentVideoTitle={currentVideoTitle}
     />
     <DisplayComments parentComment={comments} />
-    < AddCommentForm />
+    < AddCommentForm
+    currentVideoId={currentVideoId}
+    refreshComments={refreshComments}
+    />
 
     <RelatedVideos 
     currentVideoId={currentVideoId}

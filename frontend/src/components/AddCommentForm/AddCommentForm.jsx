@@ -5,19 +5,18 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import "./AddCommentForm.css"
 
-let initialValues = {
-    user: "",
-    video_id: "",
-    text: "",
-    likes: "",
-    dislikes: ""
-};
 
 const AddCommentForm = (props) => {
+  let initialValues = {
+    user: "",
+    video_id: "",
+    text: ""
+};
     const [user,token] = useAuth()
     const navigate = useNavigate()
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewComment)
-    
+    formData.video_id=props.currentVideoId
+    formData.user=user?.id
 
     async function postNewComment(){
         try {
@@ -26,9 +25,8 @@ const AddCommentForm = (props) => {
                     Authorization: 'Bearer ' + token
                 }
             })
-            navigate("/")
+            props.refreshComments()
         } catch (error) {
-            console.log(token)
             console.log(formData)
             console.log(error.message)
         }
@@ -37,7 +35,7 @@ const AddCommentForm = (props) => {
     return (
         <div className="container">
           <form className="form" onSubmit={handleSubmit}>
-            <label>
+            {/* <label>
               User:{" "}
               <input
                 type="text"
@@ -45,9 +43,9 @@ const AddCommentForm = (props) => {
                 value={formData.user}
                 onChange={handleInputChange}
               />
-            </label>
+            </label> */}
             <label>
-              Text:{" "}
+              Comment:{" "}
               <input
                 type="text"
                 name="text"

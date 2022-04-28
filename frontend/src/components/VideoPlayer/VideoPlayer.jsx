@@ -3,9 +3,22 @@ import axios from 'axios';
 import AddCommentForm from '../AddCommentForm/AddCommentForm';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../../utils/PrivateRoute';
+import useAuth from "../../hooks/useAuth";
 
 const VideoPlayer = (props) => {
-
+    const [user,token] = useAuth()
+function favoriteVideo (){
+    try {
+        let response = axios.post(`http://127.0.0.1:8000/api/hairvideos/favorite_video/${props.currentVideoId}/${user.id}/`,{}, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+    }catch (error) {
+        console.log(error.message)
+    }
+}
+    
 const videoId = props.currentVideoId
     return(
         <div>
@@ -24,6 +37,7 @@ const videoId = props.currentVideoId
             }
         />
         </Routes>
+        {user&&<button onClick={favoriteVideo}>Favorite This Video!</button>}
         </div>
         
     );

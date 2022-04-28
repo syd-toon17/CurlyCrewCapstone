@@ -1,6 +1,7 @@
 import FavoriteVideos from "../FavoriteVideos/FavoriteVideos";
 
 const DisplayFavoriteVideos = (props) => {
+    console.log(props.parentFavoriteVideos)
     return ( 
         <div>
         <h3>Favorite Videos</h3>
