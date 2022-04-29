@@ -14,12 +14,10 @@ const Comments = (props) => {
     // }
 console.log(props.parentComment)
     return ( 
-    <table className='comment-table'>
-        <tr>
+        <tr className='comment-table'>
             <td>{props.parentComment.user.username}</td>
-            <td>{props.parentComment.text}</td>  
+            <td><div className='comment-text'>{props.parentComment.text}</div></td>  
         </tr>
-    </table>
      );
 }
  

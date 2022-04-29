@@ -5,3 +5,13 @@ h1 {
 .user-info {
     display: block;
 }
+
+.ProfilePage {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.UserPage {
+    margin-left: 15%;
+    margin-right: 15%;
+}

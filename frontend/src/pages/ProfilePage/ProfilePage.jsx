@@ -91,7 +91,7 @@ const ProfilePage = (props) =>{
       }
 
         return (
-          <>
+          <div className="ProfilePage">
           <h1>Proflile Page</h1>
             <Button variant="primary" onClick={handleShow}>
               Self
@@ -179,22 +179,22 @@ const ProfilePage = (props) =>{
             <DisplayFavoriteVideos
             parentFavoriteVideos={favoriteVideos}
             />
-        </>
+            <h3>User Info</h3>
+            <table className="user-info">
+              <tr>{user.first_name} {" "} {user.last_name}</tr>
+              <tr>{user.curl_type}</tr>
+              <tr>{user.username}</tr>
+              <tr>{user.email}</tr>
+            </table>
+        </div>
         
       );
     }
       
       return(
-        <>
+        <div className="UserPage">
       <SelfOrOther />
-      <h3>User Info</h3>
-      <table className="user-info">
-        <tr>{user.first_name} {" "} {user.last_name}</tr>
-        <tr>{user.curl_type}</tr>
-        <tr>{user.username}</tr>
-        <tr>{user.email}</tr>
-      </table>
-      </>
+      </div>
       );
     
 };
