@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import DisplayFavoriteVideos from "../../components/DisplayFavoriteVideo/DisplayFavoriteVideo";
+import "./ProfilePage.css"
 
 const ProfilePage = (props) =>{
   useEffect(() => {
@@ -91,6 +92,7 @@ const ProfilePage = (props) =>{
 
         return (
           <>
+          <h1>Proflile Page</h1>
             <Button variant="primary" onClick={handleShow}>
               Self
             </Button>

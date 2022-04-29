@@ -82,14 +82,16 @@ async function getComments(id){
           currentVideoTitle={currentVideoTitle}
           />
         </div>
-        <div className="display-comments">
-          <DisplayComments parentComment={comments} />
-        </div>
-        <div className="comment-form">
-          < AddCommentForm
-          currentVideoId={currentVideoId}
-          refreshComments={refreshComments}
-          />
+        <div className="comments">
+          <div className="display-comments">
+            <DisplayComments parentComment={comments} />
+          </div>
+          <div className="comment-form">
+            < AddCommentForm
+            currentVideoId={currentVideoId}
+            refreshComments={refreshComments}
+            />
+          </div>
         </div>
       </div>
       <div className="right-col">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./Comments.css"
 
 const Comments = (props) => {
 
@@ -13,12 +14,12 @@ const Comments = (props) => {
     // }
 console.log(props.parentComment)
     return ( 
-    <tr>
-        <td>{props.parentComment.user.username}</td>
-        <td>{props.parentComment.text}</td>  
-         
-        {/* <td><button type='react' className={`fa fa-thumbs-${typeOfLike}`} onClick={handleLike}></button></td> */}
-    </tr>
+    <table className='comment-table'>
+        <tr>
+            <td>{props.parentComment.user.username}</td>
+            <td>{props.parentComment.text}</td>  
+        </tr>
+    </table>
      );
 }
  

@@ -62,9 +62,6 @@ const AddCommentForm = (props) => {
                 onChange={handleInputChange}
               />
             </label> */}
-            <p style={{ fontSize: "12px" }}>
-              NOTE: Add your comment here!
-            </p>
             <button>Submit Comment!</button>
           </form>
         </div>

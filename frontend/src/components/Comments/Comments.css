@@ -1,0 +1,9 @@
+.comment-table {
+    width: 100%;
+    table-layout: auto;
+    border: 1px #A68DAD;
+}
+
+td:first-child{
+    font-weight: bold;
+}

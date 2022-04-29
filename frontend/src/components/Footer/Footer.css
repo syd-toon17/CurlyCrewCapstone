@@ -8,7 +8,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: purple;
+  background-color: #A68DAD;
   box-shadow: 4px 2px 5px black;
 }
 
@@ -18,7 +18,7 @@ footer {
 }
 
 .copy-color {
-  color: lightblue;
+  color: #006C67;
   font-weight: bold;
   font-size: 17px;
 }
