@@ -1,4 +1,5 @@
 import React from 'react';
+import "./RelatedVideos.css"
 
 const RelatedVideos = (props) =>{
 
@@ -12,10 +13,9 @@ const RelatedVideos = (props) =>{
 return (
     <div>
         <div className="container">
-            <h1>Here are some videos related to your selection!</h1>
-            {console.log('RELATED VIDS',props.relatedVideos)}
+            <h2>Related Videos</h2>
         </div>
-        <div>   
+        <div className='thumbnails'>   
             <table> 
                 <tbody>
                 {
@@ -24,10 +24,11 @@ return (
                         return(
 
                         <tr key={index}>
-                            <td>{currentVideo.snippet.title}</td>
-                            <input type="image" src={currentVideo.snippet.thumbnails.medium.url} 
+                            <td><input type="image" src={currentVideo.snippet.thumbnails.default.url} 
                             onClick={(event) => handleClick(event, currentVideo.id.videoId, currentVideo.snippet.title, currentVideo.snippet.description)}
                             />
+                            </td>
+                            <td><div className='related-info'>{currentVideo.snippet.title}</div></td>
                         </tr>
                     )
                     }

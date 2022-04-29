@@ -13,7 +13,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Navbar from "../../components/NavBar/NavBar";
 import DisplayComments from "../../components/DisplayComments/DisplayComments";
 import AddCommentForm from "../../components/AddCommentForm/AddCommentForm";
-
+import "./HomePage.css"
 
 function HomePage(props) {
   const [searchResults, setSearchResults] = useState([]);
@@ -72,32 +72,48 @@ async function getComments(id){
 
   return (
     <div className="HomePage">
-    <SearchBar getSearchResults={getSearchResults}/>
-    <VideoPlayer 
-    currentVideoDescription={currentVideoDescription}
-    currentVideoId={currentVideoId}
-    currentVideoTitle={currentVideoTitle}
-    />
-    <DisplayComments parentComment={comments} />
-    < AddCommentForm
-    currentVideoId={currentVideoId}
-    refreshComments={refreshComments}
-    />
 
-    <RelatedVideos 
-    currentVideoId={currentVideoId}
-    relatedVideos = {relatedVideos}
-    setCurrentVideoId = {setCurrentVideoId}
-    setCurrentVideoTitle = {setCurrentVideoTitle}
-    setCurrentVideoDescription = {setCurrentVideoDescription} 
-    changeCurrentVid = {changeCurrentVid}
+      <SearchBar getSearchResults={getSearchResults}/>
+      <div className="left-col">
+        <div className='video-player'>
+          <VideoPlayer 
+          currentVideoDescription={currentVideoDescription}
+          currentVideoId={currentVideoId}
+          currentVideoTitle={currentVideoTitle}
+          />
+        </div>
+        <div className="display-comments">
+          <DisplayComments parentComment={comments} />
+        </div>
+        <div className="comment-form">
+          < AddCommentForm
+          currentVideoId={currentVideoId}
+          refreshComments={refreshComments}
+          />
+        </div>
+      </div>
+      <div className="right-col">
+        <div className="right-col-content">
+          <div className="related-videos">
+            <RelatedVideos 
+            currentVideoId={currentVideoId}
+            relatedVideos = {relatedVideos}
+            setCurrentVideoId = {setCurrentVideoId}
+            setCurrentVideoTitle = {setCurrentVideoTitle}
+            setCurrentVideoDescription = {setCurrentVideoDescription} 
+            changeCurrentVid = {changeCurrentVid}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="search-results">  
+        <SearchPage 
+        searchResults={searchResults} 
+        setCurrentVideoDescription ={setCurrentVideoDescription}
+        setCurrentVideoId ={changeCurrentVid}
+        setCurrentVideoTitle={setCurrentVideoTitle}
     />
-    <SearchPage 
-    searchResults={searchResults} 
-    setCurrentVideoDescription ={setCurrentVideoDescription}
-    setCurrentVideoId ={changeCurrentVid}
-    setCurrentVideoTitle={setCurrentVideoTitle}
-    />
+    </div>
   </div>
 );
 }

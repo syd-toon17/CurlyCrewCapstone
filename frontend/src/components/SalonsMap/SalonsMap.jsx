@@ -1,12 +1,13 @@
 import React from "react";
 import { maps_api_key } from "../../localsettings";
+import "./SalonMap.css"
 
 
 
 const SalonsMap = (props) => {
     
     return(
-        <div>
+        <div className="salon-map">
                 <iframe
                     width="600"
                     height="450"

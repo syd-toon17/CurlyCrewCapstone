@@ -1,0 +1,19 @@
+.left-col {
+    width: 30%;
+    display: table-cell;
+}
+
+.right-col {
+    width: 30%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.right-col-content {
+    margin-top: -80px;
+}
+
+.HomePage {
+    margin-left: 25%;
+    margin-right: 15%;
+}

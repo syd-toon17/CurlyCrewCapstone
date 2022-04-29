@@ -15,7 +15,7 @@ const SearchPage = (props) =>{
     return (
     <div>
         <div className="container">
-            <h1>Here are your search results!</h1>
+            {props.searchResults.length>0&&<h1>Here are your search results!</h1>}
             
         </div>
         <div>   
