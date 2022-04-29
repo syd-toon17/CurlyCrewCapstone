@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./FavoriteVideo.css"
 
 const FavoriteVideos = (props) => {
 console.log(props.parentFavoriteVideo)

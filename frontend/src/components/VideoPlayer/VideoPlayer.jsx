@@ -37,7 +37,7 @@ const videoId = props.currentVideoId
             }
         />
         </Routes>
-        {user&&<button onClick={favoriteVideo}>Favorite This Video!</button>}
+        {user&&<button className='fave-button' onClick={favoriteVideo}>Favorite This Video!</button>}
         </div>
         
     );

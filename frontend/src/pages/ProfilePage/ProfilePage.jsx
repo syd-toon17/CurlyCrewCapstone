@@ -61,7 +61,7 @@ const ProfilePage = (props) =>{
           user: user.id,
           first_name: user.first_name,
           last_name: user.last_name,
-          curl_type: curlType,
+          curl_type: user.curlType,
           self_or_other: 'self',
         
         }
@@ -187,11 +187,13 @@ const ProfilePage = (props) =>{
       return(
         <>
       <SelfOrOther />
-      {user.first_name}
-      {user.last_name}
-      {user.curl_type}
-      {user.username}
-      {user.email}
+      <h3>User Info</h3>
+      <table className="user-info">
+        <tr>{user.first_name} {" "} {user.last_name}</tr>
+        <tr>{user.curl_type}</tr>
+        <tr>{user.username}</tr>
+        <tr>{user.email}</tr>
+      </table>
       </>
       );
     

@@ -4,7 +4,7 @@ const DisplayFavoriteVideos = (props) => {
     console.log(props.parentFavoriteVideos)
     return ( 
         <div>
-        <h3>Favorite Videos</h3>
+        <h3>Favorite Video Id's</h3>
             <table>
                 <tbody>
                 {props.parentFavoriteVideos.map((favoriteVideos, index) => {

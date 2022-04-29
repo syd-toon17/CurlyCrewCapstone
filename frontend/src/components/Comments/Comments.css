@@ -1,9 +1,19 @@
 .comment-table {
     width: 100%;
+    border-spacing: 0px;
     table-layout: auto;
-    border: 1px #A68DAD;
+    border: 1px solid #A68DAD;
 }
 
 td:first-child{
     font-weight: bold;
+}
+
+td {
+    text-align: left;
+}
+
+table{
+    table-layout: fixed;
+
 }
