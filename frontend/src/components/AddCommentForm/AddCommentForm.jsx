@@ -35,15 +35,6 @@ const AddCommentForm = (props) => {
     return (
         <div className="container">
           <form className="form" onSubmit={handleSubmit}>
-            {/* <label>
-              User:{" "}
-              <input
-                type="text"
-                name="user"
-                value={formData.user}
-                onChange={handleInputChange}
-              />
-            </label> */}
             <label>
               Comment:{" "}
               <input
@@ -53,15 +44,6 @@ const AddCommentForm = (props) => {
                 onChange={handleInputChange}
               />
             </label>
-            {/* <label>
-              VideoId:{""}
-              <input
-                type="text"
-                name="video_id"
-                value={formData.video_id}
-                onChange={handleInputChange}
-              />
-            </label> */}
             <button>Submit Comment!</button>
           </form>
         </div>

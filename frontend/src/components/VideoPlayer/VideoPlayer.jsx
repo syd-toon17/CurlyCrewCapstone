@@ -28,14 +28,14 @@ const videoId = props.currentVideoId
   frameBorder="0"></iframe>
   <p>{props.currentVideoDescription}</p>
         <Routes>
-            <Route 
+            {user&&<Route 
             path='/add_comment'
             element={
                 <PrivateRoute>
                     <AddCommentForm />
                 </PrivateRoute>
             }
-        />
+        />}
         </Routes>
         {user&&<button className='fave-button' onClick={favoriteVideo}>Favorite This Video!</button>}
         </div>
